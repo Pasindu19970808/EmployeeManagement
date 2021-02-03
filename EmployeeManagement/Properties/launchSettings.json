@@ -1,0 +1,32 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false, 
+    "anonymousAuthentication": true, 
+    "iisExpress": {
+      "applicationUrl": "http://localhost:65313",
+      "sslPort": 0
+    }
+  },
+    "profiles": {
+        //this profile is used when we run it using IIS Express through
+        //visual studio
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "MyKey": "Value of my key from env"
+            }
+        },
+        //this profile is used when you run it using the dotnet cli causing a 
+        //OutofProcess Hosting model
+        "EmployeeManagement": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "applicationUrl": "https://localhost:5001;http://localhost:5000",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
+    }
+}
