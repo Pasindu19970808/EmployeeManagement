@@ -21,6 +21,7 @@ namespace EmployeeManagement
             //config is an injected service
             //an object of type IConfiguration was injected into the constructor
             _config = config;
+            
 
         }
         
@@ -31,6 +32,7 @@ namespace EmployeeManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // The value of env is coming from launchSettings.json
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
             ILogger<Startup> logger)
         {
@@ -38,8 +40,19 @@ namespace EmployeeManagement
             //development 
             if (env.IsDevelopment())
             {
+                //DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions
+                //{
+                //    SourceCodeLineCount = 5
+
+                //};
+
+                //app.UseDeveloperExceptionPage(developerExceptionPageOptions);
                 app.UseDeveloperExceptionPage();
             }
+            //else if(env.IsEnvironment("CUSTOM") || env.IsStaging() | env.IsProduction())
+            //{
+            //    app.UseDeveloperExceptionPage("/Error"); 
+            //}
 
             #region addingothermiddleware
             //app.Use(async (context , next) =>
@@ -71,20 +84,28 @@ namespace EmployeeManagement
             //app.UseDefaultFiles(defaultFilesOptions);
             //app.UseStaticFiles();
             #endregion
-           
-            FileServerOptions fileServerOptions = new FileServerOptions();
-            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
-            app.UseFileServer(fileServerOptions);
 
+            //FileServerOptions fileServerOptions = new FileServerOptions();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("hi.html");
+            //app.UseFileServer(fileServerOptions);
+
+            //app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.Run(async (context) =>
             {
                 //The context parameter passed in is actually, in its base an HttpContext type object
                 //gives which host we are running on
-                await context.Response.WriteAsync(context.Request.Host.Port.ToString());
+                //throw new Exception("Error Processing");
+                //await context.Response.WriteAsync(context.Request.Host.Port.ToString());
                 //logger.LogInformation("Request Handled");
+                await context.Response.WriteAsync("Hosting Environment: " + env.EnvironmentName);
+
+
             });
+
+            
         }
     }
 }
