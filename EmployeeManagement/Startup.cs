@@ -29,6 +29,11 @@ namespace EmployeeManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //adding all the required MVC services to the dependency injection container
+            services.AddMvcCore();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,7 +96,13 @@ namespace EmployeeManagement
             //app.UseFileServer(fileServerOptions);
 
             //app.UseDefaultFiles();
+            //Use Static Files is put before UserMvcWithDefaultRoute because if
+            //there is a request for a static file, the UseStaticFiles will complete this 
+            //and short circuit the middleware. 
             app.UseStaticFiles();
+            //If we go to the definition of UseMvcWithDefaultRoute, the route requires
+            //a controller, action
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {
@@ -100,7 +111,7 @@ namespace EmployeeManagement
                 //throw new Exception("Error Processing");
                 //await context.Response.WriteAsync(context.Request.Host.Port.ToString());
                 //logger.LogInformation("Request Handled");
-                await context.Response.WriteAsync("Hosting Environment: " + env.EnvironmentName);
+                await context.Response.WriteAsync("Hello World");
 
 
             });
