@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmployeeManagement.Models;
 
 namespace EmployeeManagement
 {
@@ -31,7 +32,7 @@ namespace EmployeeManagement
         {
             //adding all the required MVC services to the dependency injection container
             services.AddMvcCore();
-
+            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
 
 
         }
