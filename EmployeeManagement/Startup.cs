@@ -31,7 +31,7 @@ namespace EmployeeManagement
         public void ConfigureServices(IServiceCollection services)
         {
             //adding all the required MVC services to the dependency injection container
-            services.AddMvcCore();
+            services.AddMvc();
             services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
 
 

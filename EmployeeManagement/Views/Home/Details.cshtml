@@ -1,0 +1,52 @@
+﻿@model EmployeeManagement.ViewModels.HomeDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee Details";
+
+}
+
+
+@{
+    var employee = Model.Employee;
+    var pagetitle = Model.PageTitle;
+}
+
+<h3>@pagetitle</h3>
+
+<!--#region othermethod-->
+@*@{
+       //no need to cast it to employee type
+       //var employee = ViewData["Employee"] as EmployeeManagement.Models.Employee;
+       var employee = ViewBag.Employee;
+
+    }
+       <div>
+           <label>Id: @employee.Id</label>
+       </div>
+       <div>
+           <label>Name: @employee.Name</label>
+       </div>
+       <div>
+           <label>Email: @employee.Email</label>
+       </div>
+       <div>
+           <label>Department: @employee.Department</label>
+       </div>*@
+
+@*With this method it is a strongly typed view*@
+<!--#endregion-->
+
+
+<div>
+    <label>Id:<input value="@employee.Id" readonly /></label>
+</div>
+<div>
+    <label>Name:<input value="@employee.Name" readonly /></label>
+</div>
+<div>
+    <label>Email:<input value="@employee.Email" readonly /></label>
+</div>
+<div>
+    <label>Department:<input value="@employee.Department" readonly /></label>
+</div>
+

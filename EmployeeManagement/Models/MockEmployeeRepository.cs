@@ -24,5 +24,27 @@ namespace EmployeeManagement.Models
             return _employeeList.Where(x => x.Id == Id).FirstOrDefault();
             
         }
+
+        public List<Employee> GetEmployee_Array(int [] idarray)
+        {
+            List<Employee> result = new List<Employee>();
+            foreach(int id in idarray)
+            {
+                result.Add(_employeeList.Where(x => x.Id == id).FirstOrDefault());
+            }
+            return result;
+
+        }
+
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            return _employeeList;
+            
+            
+
+
+        }
+
+
     }
 }
