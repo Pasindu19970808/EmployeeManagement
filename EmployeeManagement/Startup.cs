@@ -103,21 +103,24 @@ namespace EmployeeManagement
             app.UseStaticFiles();
             //If we go to the definition of UseMvcWithDefaultRoute, the route requires
             //a controller, action
-            app.UseMvcWithDefaultRoute();
-
-            app.Run(async (context) =>
-            {
-                //The context parameter passed in is actually, in its base an HttpContext type object
-                //gives which host we are running on
-                //throw new Exception("Error Processing");
-                //await context.Response.WriteAsync(context.Request.Host.Port.ToString());
-                //logger.LogInformation("Request Handled");
-                await context.Response.WriteAsync("Hello World");
+            //app.UseMvcWithDefaultRoute();
 
 
+            //app.Run(async (context) =>
+            //{
+            //    //The context parameter passed in is actually, in its base an HttpContext type object
+            //    //gives which host we are running on
+            //    //throw new Exception("Error Processing");
+            //    //await context.Response.WriteAsync(context.Request.Host.Port.ToString());
+            //    //logger.LogInformation("Request Handled");
+            //    await context.Response.WriteAsync("Hello World");
+
+
+            //});
+
+            app.UseMvc(routes => {
+                routes.MapRoute("default","{controller=Home}/{action=Index}/{id?}");
             });
-
-            
         }
     }
 }
