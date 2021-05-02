@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using EmployeeManagement.ViewModels;
 namespace EmployeeManagement.Controllers
 {
+    //[Route("Home")]
     public class HomeController:Controller
     {
 
@@ -23,17 +24,26 @@ namespace EmployeeManagement.Controllers
             _employeeRepository = employeeRepository;
         }
         
+        //as we have placed the route attribute for controller outside, 
+        //to make any empty url to work, we need to include [Route("~/")]
+        //if we called localhost1234/Home, then it will use [Route("")] to map it 
+        //[Route("")] 
+        //[Route("Index")]
+        //[Route("~/")]
         public ViewResult Index()
         {
             var model = _employeeRepository.GetAllEmployee();
             return View(model);
         }
-        public ViewResult Details(int id)
+
+        
+        //[Route("Details/{id?}")]
+        public ViewResult Details(int? id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel();
 
-            int emp_id = id == 0 ? 1 : id;
-            homeDetailsViewModel.Employee = _employeeRepository.GetEmployee(emp_id);
+            
+            homeDetailsViewModel.Employee = _employeeRepository.GetEmployee(id??1);
 
             #region different return View() methods
             //return View("Test");
