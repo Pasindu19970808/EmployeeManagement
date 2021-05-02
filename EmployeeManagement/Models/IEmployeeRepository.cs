@@ -13,7 +13,7 @@ namespace EmployeeManagement.Models
         //used to retrieve employee details from database
         Employee GetEmployee(int Id);
         List<Employee> GetEmployee_Array(int [] idarray);
-        IEnumerable<Employee> GetAllEmployee();
+        List<Employee> GetAllEmployee();
        
     }
 }
