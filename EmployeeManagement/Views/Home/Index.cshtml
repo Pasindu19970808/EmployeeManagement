@@ -13,7 +13,7 @@
             <div class="card-header">
                 <h3>@employee.Name</h3>
             </div>
-            <img class="card-img-top" src="~/images/nba.JPG" />
+            <img class="card-img-top" src="~/images/nba.JPG" asp-append-version="true"/>
             <div class="card-footer text-center">
                 @*@Html.ActionLink("View","details","home",new {id = employee.Id })*@
                 @*<a href=@Url.Action("Details","Home", new { id = employee.Id}) class="btn btn-primary">View</a>*@
