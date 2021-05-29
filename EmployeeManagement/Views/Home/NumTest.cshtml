@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "NUMTEST";
+}
+
+<form method="post">
+    <div>
+        <label>Name : <input id = "Name" onkeyup="removenum(this.id);"   required /></label>
+    </div>
+    <div>
+        <label>Age  : <input id = "Age" required /></label>
+    </div>
+</form>
+
+<script type="text/javascript">
+
+    function removenum(id) {
+        //var regex = /[^a-zA-Z]/;
+        //console.log(regex.test($("#" + id).val()))
+        $("#" + id).val($("#" + id).val().replace(/[^a-zA-Z]*/gi,""))
+    }
+
+
+
+
+</script>

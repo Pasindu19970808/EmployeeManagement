@@ -36,6 +36,11 @@ namespace EmployeeManagement.Controllers
             return View(model);
         }
 
+        public IActionResult NumTest()
+        {
+            return View();
+        }
+
         
         //[Route("Details/{id?}")]
         public ViewResult Details(int? id)
